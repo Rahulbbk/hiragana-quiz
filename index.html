@@ -1,1 +1,480 @@
 
+html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Hiragana Mastery Challenge</title>
+        <!-- Tailwind CSS for modern responsive styles -->
+          <script src="https://cdn.tailwindcss.com"></script>
+            <style>
+                @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+                    body {
+                          font-family: 'Plus Jakarta Sans', sans-serif;
+                              }
+                                </style>
+                                </head>
+                                <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-indigo-500 selection:text-white">
+
+                                  <!-- Header -->
+                                    <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-10 px-4 py-3 shadow-md">
+                                        <div class="max-w-4xl mx-auto flex items-center justify-between">
+                                              <div class="flex items-center gap-2.5">
+                                                      <div class="bg-indigo-600 p-2 rounded-xl text-white shadow-lg shadow-indigo-500/20">
+                                                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                                                                        </div>
+                                                                                <div>
+                                                                                          <h1 class="text-lg font-bold tracking-tight bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">
+                                                                                                      Hiragana Mastery
+                                                                                                                </h1>
+                                                                                                                          <p class="text-xs text-slate-400 hidden sm:block font-medium">Test your Japanese syllabary</p>
+                                                                                                                                  </div>
+                                                                                                                                        </div>
+
+                                                                                                                                              <div class="flex items-center gap-2">
+                                                                                                                                                      <button id="soundToggle" class="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors" title="Toggle Sound">
+                                                                                                                                                                <svg id="soundOnIcon" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+                                                                                                                                                                          <svg id="soundOffIcon" class="w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15zm11.314-6l-4.243 4.243m0-4.243l4.243 4.243"/></svg>
+                                                                                                                                                                                  </button>
+                                                                                                                                                                                          <button id="studyToggle" class="px-3 py-1.5 rounded-lg flex items-center gap-1.5 text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-300 transition-all">
+                                                                                                                                                                                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                                                                                                                                                                                                              <span>Study Guide</span>
+                                                                                                                                                                                                                      </button>
+                                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                                  </header>
+  <!-- Main Area -->
+    <main class="flex-grow max-w-4xl w-full mx-auto p-4 flex flex-col justify-start">
+        
+            <!-- Study Guide Pane (Hidden initially) -->
+                <div id="studyGuide" class="hidden bg-slate-900 rounded-2xl border border-slate-800 p-5 mb-6 shadow-xl">
+                      <div class="flex items-center justify-between mb-4">
+                              <div class="flex items-center gap-2">
+                                        <svg class="w-5 h-5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                                                  <h3 class="font-bold text-white text-base">Interactive Study Chart</h3>
+                                                          </div>
+                                                                  <p class="text-xs text-indigo-400 font-medium">Click a card to highlight reading</p>
+                                                                        </div>
+                                                                              <div id="studyGrid" class="grid grid-cols-5 gap-2"></div>
+                                                                                  </div>
+    <!-- Main Menu screen -->
+        <div id="menuScreen" class="flex-grow flex flex-col items-center justify-center py-10 text-center max-w-lg mx-auto">
+              <div class="w-20 h-20 bg-indigo-500/10 rounded-full flex items-center justify-center mb-6 border border-indigo-500/30 animate-pulse">
+                      <span class="text-4xl text-indigo-400 font-bold">あ</span>
+                            </div>
+                                  <h2 class="text-3xl font-extrabold mb-3 text-white tracking-tight">Hiragana Challenge</h2>
+                                        <p class="text-slate-400 text-sm mb-8 leading-relaxed">
+                                                Can you match all 45 prompts? Correct tiles light up <span class="text-emerald-400 font-semibold">Green</span>. Misses will stay quiet until the very end, when all errors are instantly highlighted in <span class="text-rose-500 font-semibold">Red</span>!
+                                                      </p>
+
+                                                            <button id="startButton" class="w-full sm:w-auto px-8 py-4 bg-indigo-600 hover:bg-indigo-500 active:scale-95 text-white font-bold rounded-2xl shadow-xl shadow-indigo-600/25 transition-all text-base flex items-center justify-center gap-3">
+                                                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                                                            <span>Start Challenge</span>
+                                                                                  </button>
+                                                                                      </div>
+    <!-- Active Game / Ended Screen Container -->
+    <div id="gameScreen" class="hidden w-full flex flex-col gap-5">
+          
+                <!-- HUD / Progress Stats -->
+                      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-lg flex flex-col gap-3">
+                              <div class="flex items-center justify-between">
+                                        <div>
+                                                    <span class="text-xs font-bold uppercase tracking-wider text-slate-500 block">Progress</span>
+                                                                <span class="text-lg font-extrabold text-white">
+                                                                              <span id="answeredCount">0</span> <span class="text-slate-500 text-sm">/ 45 Answered</span>
+                                                                                          </span>
+                                                                                                    </div>
+                                                                                                    
+                                                                                                              <div class="flex items-center gap-4">
+                                                                                                                          <!-- Timer -->
+                                                                                                                                      <div class="bg-slate-950/60 px-4 py-2 rounded-xl border border-slate-800 flex items-center gap-2.5">
+                                                                                                                                                    <span id="timerPulse" class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+                                                                                                                                                                  <span id="timerText" class="font-mono text-lg font-bold tracking-wider text-slate-200">06:00</span>
+                                                                                                                                                                              </div>
+                                                                                                                                                                              
+                                                                                                                                                                                          <!-- Play/Pause -->
+                                                                                                                                                                                                      <button id="pauseButton" class="p-2.5 rounded-xl border bg-slate-800 hover:bg-slate-700 border-slate-700 text-slate-300 transition-colors">
+                                                                                                                                                                                                                    <svg id="pauseIcon" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                                                                                                                                                                                                                                  <svg id="playIcon" class="w-4 h-4 hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                                                                                                                                                                                                                              </button>
+                                                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                                                                </div> 
+        <!-- Progress bar -->
+                <div class="w-full bg-slate-950 h-2.5 rounded-full overflow-hidden border border-slate-800/50">
+                          <div id="progressBar" class="bg-indigo-500 h-full w-0 transition-all duration-300 shadow-[0_0_12px_rgba(99,102,241,0.4)]"></div>
+                                  </div>
+                                        </div>
+                                        
+                                              <!-- Question Board -->
+                                                    <div id="promptBoard" class="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-lg relative flex items-center justify-between">
+                                                            <button id="prevBtn" class="p-2.5 rounded-xl bg-slate-950/60 hover:bg-slate-800 text-slate-400 hover:text-white border border-slate-800 transition-colors">
+                                                                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                                                                              </button>
+                                                                              
+                                                                                      <div class="text-center py-4">
+                                                                                                <span class="text-xs font-bold uppercase tracking-widest text-indigo-400">FIND THE HIRAGANA FOR</span>
+                                                                                                          <h3 id="romajiPrompt" class="text-6xl font-extrabold tracking-tight text-white mt-1 select-none font-mono">hi</h3>
+                                                                                                                    <p id="questionInfo" class="text-xs text-slate-500 mt-2">Question 1 of 45</p>
+                                                                                                                            </div>
+                                                                                                                            
+                                                                                                                                    <button id="nextBtn" class="p-2.5 rounded-xl bg-slate-950/60 hover:bg-slate-800 text-slate-400 hover:text-white border border-slate-800 transition-colors">
+                                                                                                                                              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                                                                                                                                                      </button>
+                                                                                                                                                            </div>
+                                                                                                                                                            -->
+      <!-- End of Game Stats Box -->
+      <div id="endBoard" class="hidden bg-slate-900 border-2 border-indigo-500/50 rounded-2xl p-6 shadow-2xl">
+              <div class="text-center mb-6">
+                        <div class="inline-flex p-3 bg-indigo-500/10 rounded-2xl border border-indigo-500/30 text-indigo-400 mb-3">
+                                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+                                              </div>
+                                                        <h3 class="text-2xl font-bold text-white">Challenge Completed!</h3>
+                                                                  <p class="text-slate-400 text-xs mt-1">Below, mistakes are highlighted in Red. Correct answers are in Green.</p>
+                                                                          </div>
+                                                                          
+                                                                                  <div class="grid grid-cols-3 gap-3 mb-6">
+                                                                                            <div class="bg-slate-950/60 border border-slate-800 p-3 rounded-xl text-center">
+                                                                                                        <span class="text-xs text-slate-500 block font-medium">Final Score</span>
+                                                                                                                    <span id="finalScoreText" class="text-xl font-bold text-white">0 / 45</span>
+                                                                                                                              </div>
+                                                                                                                                        <div class="bg-slate-950/60 border border-slate-800 p-3 rounded-xl text-center">
+                                                                                                                                                    <span class="text-xs text-slate-500 block font-medium">Accuracy</span>
+                                                                                                                                                                <span id="accuracyText" class="text-xl font-bold text-emerald-400">0%</span>
+                                                                                                                                                                          </div>
+                                                                                                                                                                                    <div class="bg-slate-950/60 border border-slate-800 p-3 rounded-xl text-center">
+                                                                                                                                                                                                <span class="text-xs text-slate-500 block font-medium">Missed Keys</span>
+                                                                                                                                                                                                            <span id="missedText" class="text-xl font-bold text-rose-400">0</span>
+                                                                                                                                                                                                                      </div>
+                                                                                                                                                                                                                              </div>
+                                                                                                                                                                                                                              -->
+        <button id="restartButton" class="w-full py-3.5 bg-indigo-600 hover:bg-indigo-500 active:scale-95 text-white font-bold rounded-xl shadow-lg transition-all text-sm flex items-center justify-center gap-2">
+                          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.21 11H15"/></svg>
+                                    <span>Try Again</span>
+                                            </button>
+                                                  </div>
+
+                                                        <!-- Hiragana 9x5 Button Grid -->
+                                                              <div class="relative">
+                                                                      <div id="pauseOverlay" class="hidden absolute inset-0 bg-slate-950/90 backdrop-blur-sm z-20 rounded-2xl flex items-center justify-center">
+                                                                                <p class="text-slate-400 font-medium text-sm flex items-center gap-2">
+                                                                                            Game is paused. Click Play button above to resume.
+                                                                                                      </p>
+                                                                                                              </div>
+                                                                                                                      <div id="buttonsGrid" class="grid grid-cols-5 gap-2 sm:gap-3"></div>
+                                                                                                                            </div>
+
+                                                                                                                                </div>
+                                                                                                                                  </main>
+
+                                                                                                                                    <footer class="py-4 text-center text-xs text-slate-600 border-t border-slate-900 mt-8 max-w-4xl mx-auto w-full">
+                                                                                                                                        <p>Interactive Hiragana Keyboard Trainer • Beautiful educational utilities</p>
+                                                                                                                                          </footer>
+
+  <script>
+      const HIRAGANA_DATA = [
+            { hiragana: 'ん', romaji: 'n' },   { hiragana: 'す', romaji: 'su' }, { hiragana: 'め', romaji: 'me' }, { hiragana: 'ひ', romaji: 'hi' }, { hiragana: 'と', romaji: 'to' },
+                  { hiragana: 'わ', romaji: 'wa' },  { hiragana: 'か', romaji: 'ka' }, { hiragana: 'て', romaji: 'te' }, { hiragana: 'ゆ', romaji: 'yu' }, { hiragana: 'つ', romaji: 'tsu' },
+                        { hiragana: 'ろ', romaji: 'ro' },  { hiragana: 'も', romaji: 'mo' }, { hiragana: 'な', romaji: 'na' }, { hiragana: 'こ', romaji: 'ko' }, { hiragana: 'や', romaji: 'ya' },
+                              { hiragana: 'む', romaji: 'mu' },  { hiragana: 'お', romaji: 'o' },  { hiragana: 'く', romaji: 'ku' }, { hiragana: 'し', romaji: 'shi' },{ hiragana: 'ぬ', romaji: 'nu' },
+                                    { hiragana: 'み', romaji: 'mi' },  { hiragana: 'け', romaji: 'ke' }, { hiragana: 'ほ', romaji: 'ho' }, { hiragana: 'は', romaji: 'ha' }, { hiragana: 'る', romaji: 'ru' },
+                                          { hiragana: 'れ', romaji: 're' },  { hiragana: 'た', romaji: 'ta' }, { hiragana: 'え', romaji: 'e' },  { hiragana: 'に', romaji: 'ni' }, { hiragana: 'さ', romaji: 'sa' },
+                                                { hiragana: 'い', romaji: 'i' },   { hiragana: 'そ', romaji: 'so' }, { hiragana: 'よ', romaji: 'yo' }, { hiragana: 'り', romaji: 'ri' }, { hiragana: 'ふ', romaji: 'fu' },
+                                                      { hiragana: 'う', romaji: 'u' },   { hiragana: 'あ', romaji: 'a' },  { hiragana: 'せ', romaji: 'se' }, { hiragana: 'ま', romaji: 'ma' }, { hiragana: 'ち', romaji: 'chi' },
+                                                            { hiragana: 'ね', romaji: 'ne' },  { hiragana: 'へ', romaji: 'he' }, { hiragana: 'の', romaji: 'no' }, { hiragana: 'ら', romaji: 'ra' }, { hiragana: 'き', romaji: 'ki' }
+                                                                ];
+
+                                                                    let gameState = 'menu'; // menu, playing, paused, ended
+                                                                        let questions = []; // Shuffled list of indexes
+                                                                            let currentIndex = 0;
+                                                                                let userAnswers = {}; // key: romaji, value: { clicked, isCorrect }
+                                                                                    let timeLeft = 360; 
+                                                                                        let timerInterval = null;
+                                                                                            let soundEnabled = true;
+    // Audio synthesis setup
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            function playBeep(type) {
+                  if (!soundEnabled) return;
+                        if (audioCtx.state === 'suspended') audioCtx.resume();
+                              
+                                    const osc = audioCtx.createOscillator();
+                                          const gain = audioCtx.createGain();
+                                                osc.connect(gain);
+                                                      gain.connect(audioCtx.destination);
+
+                                                            if (type === 'correct') {
+                                                                    osc.type = 'sine';
+                                                                            osc.frequency.setValueAtTime(523.25, audioCtx.currentTime); // C5
+                                                                                    osc.frequency.setValueAtTime(659.25, audioCtx.currentTime + 0.1); // E5
+                                                                                            gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                                                                                                    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.25);
+                                                                                                            osc.start();
+                                                                                                                    osc.stop(audioCtx.currentTime + 0.25);
+                                                                                                                          } else if (type === 'wrong') {
+                                                                                                                                  osc.type = 'triangle';
+                                                                                                                                          osc.frequency.setValueAtTime(140, audioCtx.currentTime);
+                                                                                                                                                  gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+                                                                                                                                                          gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.25);
+                                                                                                                                                                  osc.start();
+                                                                                                                                                                          osc.stop(audioCtx.currentTime + 0.25);
+                                                                                                                                                                                }
+                                                                                                                                                                                    }
+
+                                                                                                                                                                                        // Shuffle Array
+                                                                                                                                                                                            function shuffle(array) {
+                                                                                                                                                                                                  let currentIndex = array.length, randomIndex;
+                                                                                                                                                                                                        while (currentIndex != 0) {
+                                                                                                                                                                                                                randomIndex = Math.floor(Math.random() * currentIndex);
+                                                                                                                                                                                                                        currentIndex--;
+                                                                                                                                                                                                                                [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+                                                                                                                                                                                                                                      }
+                                                                                                                                                                                                                                            return array;
+                                                                                                                                                                                                                                                }
+
+                                                                                                                                                                                                                                                    // Toggle Study Guide View
+                                                                                                                                                                                                                                                        const studyToggle = document.getElementById('studyToggle');
+                                                                                                                                                                                                                                                            const studyGuide = document.getElementById('studyGuide');
+                                                                                                                                                                                                                                                                const studyGrid = document.getElementById('studyGrid');
+    // Build Study Grid
+        HIRAGANA_DATA.forEach((item, index) => {
+              const card = document.createElement('div');
+                    card.className = "bg-slate-950/80 border border-slate-800 rounded-xl p-2.5 flex flex-col items-center justify-center transition-all hover:bg-indigo-950/40 hover:border-indigo-500/50 cursor-pointer";
+                          card.innerHTML = `
+                                  <span class="text-xl font-bold text-slate-100">${item.hiragana}</span>
+                                          <span class="text-xs font-semibold text-indigo-400 mt-1 romaji-label hidden">${item.romaji}</span>
+                                                `;
+                                                      card.addEventListener('click', () => {
+                                                              const label = card.querySelector('.romaji-label');
+                                                                      label.classList.toggle('hidden');
+                                                                            });
+                                                                                  studyGrid.appendChild(card);
+                                                                                      });
+
+                                                                                          studyToggle.addEventListener('click', () => {
+                                                                                                studyGuide.classList.toggle('hidden');
+                                                                                                    });
+
+                                                                                                        // Toggle Sound Settings
+                                                                                                            const soundToggle = document.getElementById('soundToggle');
+                                                                                                                const soundOnIcon = document.getElementById('soundOnIcon');
+                                                                                                                    const soundOffIcon = document.getElementById('soundOffIcon');
+                                                                                                                        soundToggle.addEventListener('click', () => {
+                                                                                                                              soundEnabled = !soundEnabled;
+                                                                                                                                    soundOnIcon.classList.toggle('hidden', !soundEnabled);
+                                                                                                                                          soundOffIcon.classList.toggle('hidden', soundEnabled);
+                                                                                                                                              });
+
+                                                                                                                                                  // Pause/Play Controls
+                                                                                                                                                      const pauseButton = document.getElementById('pauseButton');
+                                                                                                                                                          const pauseIcon = document.getElementById('pauseIcon');
+                                                                                                                                                              const playIcon = document.getElementById('playIcon');
+                                                                                                                                                                  const pauseOverlay = document.getElementById('pauseOverlay');
+                                                                                                                                                                      const timerPulse = document.getElementById('timerPulse');
+
+                                                                                                                                                                          pauseButton.addEventListener('click', () => {
+                                                                                                                                                                                if (gameState === 'playing') {
+                                                                                                                                                                                        gameState = 'paused';
+                                                                                                                                                                                                clearInterval(timerInterval);
+                                                                                                                                                                                                        pauseOverlay.classList.remove('hidden');
+                                                                                                                                                                                                                pauseIcon.classList.add('hidden');
+                                                                                                                                                                                                                        playIcon.classList.remove('hidden');
+                                                                                                                                                                                                                                timerPulse.classList.replace('bg-emerald-500', 'bg-amber-500');
+                                                                                                                                                                                                                                      } else if (gameState === 'paused') {
+                                                                                                                                                                                                                                              gameState = 'playing';
+                                                                                                                                                                                                                                                      startTimer();
+                                                                                                                                                                                                                                                              pauseOverlay.classList.add('hidden');
+                                                                                                                                                                                                                                                                      pauseIcon.classList.remove('hidden');
+                                                                                                                                                                                                                                                                              playIcon.classList.add('hidden');
+                                                                                                                                                                                                                                                                                      timerPulse.classList.replace('bg-amber-500', 'bg-emerald-500');
+                                                                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                                                                                });
+
+   // Start Timer
+       function startTimer() {
+             timerInterval = setInterval(() => {
+                     timeLeft--;
+                             updateTimerDisplay();
+                                     if (timeLeft <= 0) {
+                                               endGame();
+                                                       }
+                                                             }, 1000);
+                                                                 }
+
+                                                                     function updateTimerDisplay() {
+                                                                           const mins = Math.floor(timeLeft / 60).toString().padStart(2, '0');
+                                                                                 const secs = (timeLeft % 60).toString().padStart(2, '0');
+                                                                                       document.getElementById('timerText').innerText = `${mins}:${secs}`;
+                                                                                           }
+
+                                                                                               // Start Game
+                                                                                                   document.getElementById('startButton').addEventListener('click', startGame);
+                                                                                                       document.getElementById('restartButton').addEventListener('click', startGame);
+
+                                                                                                           function startGame() {
+                                                                                                                 gameState = 'playing';
+                                                                                                                       questions = shuffle(Array.from({ length: HIRAGANA_DATA.length }, (_, i) => i));
+                                                                                                                             currentIndex = 0;
+                                                                                                                                   userAnswers = {};
+                                                                                                                                         timeLeft = 360;
+                                                                                                                                               
+                                                                                                                                                     document.getElementById('menuScreen').classList.add('hidden');
+                                                                                                                                                           document.getElementById('endBoard').classList.add('hidden');
+                                                                                                                                                                 document.getElementById('promptBoard').classList.remove('hidden');
+                                                                                                                                                                       document.getElementById('gameScreen').classList.remove('hidden');
+                                                                                                                                                                             pauseOverlay.classList.add('hidden');
+                                                                                                                                                                                   pauseIcon.classList.remove('hidden');
+                                                                                                                                                                                         playIcon.classList.add('hidden');
+                                                                                                                                                                                               timerPulse.classList.replace('bg-amber-500', 'bg-emerald-500');
+
+                                                                                                                                                                                                     clearInterval(timerInterval);
+                                                                                                                                                                                                           startTimer();
+                                                                                                                                                                                                                 updateTimerDisplay();
+                                                                                                                                                                                                                       renderButtons();
+                                                                                                                                                                                                                             updatePrompt();
+                                                                                                                                                                                                                                 }
+
+                                                                                                                                                                                                                                     // Render Hiragana Button Grid
+                                                                                                                                                                                                                                         function renderButtons() {
+                                                                                                                                                                                                                                               const grid = document.getElementById('buttonsGrid');
+                                                                                                                                                                                                                                                     grid.innerHTML = '';
+
+                                                                                                                                                                                                                                                           HIRAGANA_DATA.forEach((item, index) => {
+                                                                                                                                                                                                                                                                   const btn = document.createElement('button');
+                                                                                                                                                                                                                                                                           btn.id = `btn-${item.romaji}`;
+                                                                                                                                                                                                                                                                                   btn.className = "h-14 sm:h-16 rounded-xl text-lg sm:text-2xl font-bold border flex flex-col items-center justify-center transition-all bg-white border-slate-200 text-slate-800 shadow-sm hover:bg-indigo-50 hover:border-indigo-400 active:bg-indigo-100";
+                                                                                                                                                                                                                                                                                           btn.innerHTML = `<span>${item.hiragana}</span>`;
+                                                                                                                                                                                                                                                                                                   
+                                                                                                                                                                                                                                                                                                           btn.addEventListener('click', () => {
+                                                                                                                                                                                                                                                                                                                     if (gameState !== 'playing') return;
+                                                                                                                                                                                                                                                                                                                               handleAnswer(item);
+                                                                                                                                                                                                                                                                                                                                       });
+
+                                                                                                                                                                                                                                                                                                                                               grid.appendChild(btn);
+                                                                                                                                                                                                                                                                                                                                                     });
+                                                                                                                                                                                                                                                                                                                                                         }
+
+                                                                                                                                                                                                                                                                                                                                                             // Handle User Answer
+                                                                                                                                                                                                                                                                                                                                                                 function handleAnswer(clickedItem) {
+                                                                                                                                                                                                                                                                                                                                                                       const currentPromptItem = HIRAGANA_DATA[questions[currentIndex]];
+                                                                                                                                                                                                                                                                                                                                                                             const promptRomaji = currentPromptItem.romaji;
+
+      // Ignore if already answered
+            if (userAnswers[promptRomaji]) return;
+
+                  const isCorrect = clickedItem.romaji === promptRomaji;
+                        userAnswers[promptRomaji] = {
+                                clicked: clickedItem.hiragana,
+                                        isCorrect: isCorrect
+                                              };
+
+                                                    const btn = document.getElementById(`btn-${promptRomaji}`);
+
+                                                          if (isCorrect) {
+                                                                  playBeep('correct');
+                                                                          // Immediately paint green and lock
+                                                                                  btn.className = "h-14 sm:h-16 rounded-xl text-lg sm:text-2xl font-bold border flex flex-col items-center justify-center transition-all bg-emerald-500 text-white border-emerald-600 pointer-events-none scale-95 opacity-80";
+                                                                                        } else {
+                                                                                                playBeep('wrong');
+                                                                                                        // If wrong, lock the button but don't show red until the game ends
+                                                                                                                const clickedBtn = document.getElementById(`btn-${clickedItem.romaji}`);
+                                                                                                                        if (clickedBtn) {
+                                                                                                                                  clickedBtn.classList.add('pointer-events-none', 'opacity-60');
+                                                                                                                                          }
+                                                                                                                                                }
+
+                                                                                                                                                      // Update progress HUD elements
+                                                                                                                                                            const answeredCount = Object.keys(userAnswers).length;
+                                                                                                                                                                  document.getElementById('answeredCount').innerText = answeredCount;
+                                                                                                                                                                        document.getElementById('progressBar').style.width = `${(answeredCount / 45) * 100}%`;
+
+                                                                                                                                                                              // Check for completion
+                                                                                                                                                                                    if (answeredCount === HIRAGANA_DATA.length) {
+                                                                                                                                                                                            endGame();
+                                                                                                                                                                                                  } else {
+                                                                                                                                                                                                          moveToNextUnanswered();
+                                                                                                                                                                                                                }
+                                                                                                                                                                                                                    }
+    // Move to next unanswered index
+        function moveToNextUnanswered() {
+              let found = false;
+                    for (let i = currentIndex + 1; i < questions.length; i++) {
+                            const romaji = HIRAGANA_DATA[questions[i]].romaji;
+                                    if (!userAnswers[romaji]) {
+                                              currentIndex = i;
+                                                        found = true;
+                                                                  break;
+                                                                          }
+                                                                                }
+                                                                                      if (!found) {
+                                                                                              for (let i = 0; i < currentIndex; i++) {
+                                                                                                        const romaji = HIRAGANA_DATA[questions[i]].romaji;
+                                                                                                                  if (!userAnswers[romaji]) {
+                                                                                                                              currentIndex = i;
+                                                                                                                                          found = true;
+                                                                                                                                                      break;
+                                                                                                                                                                }
+                                                                                                                                                                        }
+                                                                                                                                                                              }
+                                                                                                                                                                                    updatePrompt();
+                                                                                                                                                                                        }
+
+                                                                                                                                                                                            // Update current Prompt Word
+                                                                                                                                                                                                function updatePrompt() {
+                                                                                                                                                                                                      const currentPromptItem = HIRAGANA_DATA[questions[currentIndex]];
+                                                                                                                                                                                                            document.getElementById('romajiPrompt').innerText = currentPromptItem.romaji;
+                                                                                                                                                                                                                  document.getElementById('questionInfo').innerText = `Question ${currentIndex + 1} of 45`;
+                                                                                                                                                                                                                      }
+
+                                                                                                                                                                                                                          // Manual navigation buttons
+                                                                                                                                                                                                                              document.getElementById('prevBtn').addEventListener('click', () => {
+                                                                                                                                                                                                                                    if (gameState !== 'playing') return;
+                                                                                                                                                                                                                                          currentIndex = (currentIndex - 1 + questions.length) % questions.length;
+                                                                                                                                                                                                                                                updatePrompt();
+                                                                                                                                                                                                                                                    });
+
+                                                                                                                                                                                                                                                        document.getElementById('nextBtn').addEventListener('click', () => {
+                                                                                                                                                                                                                                                              if (gameState !== 'playing') return;
+                                                                                                                                                                                                                                                                    currentIndex = (currentIndex + 1) % questions.length;
+                                                                                                                                                                                                                                                                          updatePrompt();
+                                                                                                                                                                                                                                                                              });
+
+                                                                                                                                                                                                                                                                                  // End Game: Stop and show Red/Green mistakes
+                                                                                                                                                                                                                                                                                      function endGame() {
+                                                                                                                                                                                                                                                                                            gameState = 'ended';
+                                                                                                                                                                                                                                                                                                  clearInterval(timerInterval);
+
+                                                                                                                                                                                                                                                                                                        document.getElementById('promptBoard').classList.add('hidden');
+                                                                                                                                                                                                                                                                                                              document.getElementById('endBoard').classList.remove('hidden');
+
+                                                                                                                                                                                                                                                                                                                    let correctCount = 0;
+                                                                                                                                                                                                                                                                                                                          HIRAGANA_DATA.forEach((item) => {
+                                                                                                                                                                                                                                                                                                                                  const answer = userAnswers[item.romaji];
+                                                                                                                                                                                                                                                                                                                                          const btn = document.getElementById(`btn-${item.romaji}`);
+                                                                                                                                                                                                                                                                                                                                                  
+                                                                                                                                                                                                                                                                                                                                                          if (btn) {
+                                                                                                                                                                                                                                                                                                                                                                    // Add the Romaji label sub-text on every card to help review
+                                                                                                                                                                                                                                                                                                                                                                              btn.innerHTML = `
+                                                                                                                                                                                                                                                                                                                                                                                          <span>${item.hiragana}</span>
+                                                                                                                                                                                                                                                                                                                                                                                                      <span class="text-[10px] font-mono font-medium opacity-80 uppercase">${item.romaji}</span>
+                                                                                                                                                                                                                                                                                                                                                                                                                `;
+                                                                                                                                                                                                                                                                                                                                                                                                                          btn.className = "h-14 sm:h-16 rounded-xl text-lg sm:text-2xl font-bold border flex flex-col items-center justify-center transition-all bg-slate-100 text-slate-400 border-slate-200 opacity-60";
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                    if (answer) {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                if (answer.isCorrect) {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              correctCount++;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            btn.className = "h-14 sm:h-16 rounded-xl text-lg sm:text-2xl font-bold border flex flex-col items-center justify-center transition-all bg-emerald-500 text-white border-emerald-600 scale-95 shadow-md shadow-emerald-500/10";
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        } else {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      btn.className = "h-14 sm:h-16 rounded-xl text-lg sm:text-2xl font-bold border flex flex-col items-center justify-center transition-all bg-rose-500 text-white border-rose-600 animate-pulse shadow-md shadow-rose-500/10";
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          });
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                // Update final stats scorecards
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      document.getElementById('finalScoreText').innerText = `${correctCount} / 45`;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            document.getElementById('accuracyText').innerText = `${Math.round((correctCount / 45) * 100)}%`;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  document.getElementById('missedText').innerText = `${45 - correctCount}`;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </script>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </body>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </html>
