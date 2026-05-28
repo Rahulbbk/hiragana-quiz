@@ -183,12 +183,12 @@ html
                                                             { hiragana: 'ね', romaji: 'ne' },  { hiragana: 'へ', romaji: 'he' }, { hiragana: 'の', romaji: 'no' }, { hiragana: 'ら', romaji: 'ra' }, { hiragana: 'き', romaji: 'ki' }
                                                                 ];
 
-                                                                    let gameState = 'menu'; // menu, playing, paused, ended
-                                                                        let questions = []; // Shuffled list of indexes
-                                                                            let currentIndex = 0;
-                                                                                let userAnswers = {}; // key: romaji, value: { clicked, isCorrect }
-                                                                                    let timeLeft = 360; 
-                                                                                        let timerInterval = null;
+let gameState = 'menu'; // menu, playing, paused, ended
+let questions = []; // Shuffled list of indexes
+let currentIndex = 0;
+let userAnswers = {}; // key: romaji, value: { clicked, isCorrect }
+let timeLeft = 360; 
+let timerInterval = null;
                                                                                             let soundEnabled = true;
     // Audio synthesis setup
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
